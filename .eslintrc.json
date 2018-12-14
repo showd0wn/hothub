@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": "airbnb-base",
+  "plugins": ["react"],
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "class-methods-use-this": "off",
+    "semi": ["error", "never", { "beforeStatementContinuationChars": "always" }]
+  }
+}

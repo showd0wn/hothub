@@ -1,0 +1,25 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "prod": "next build && next start -p 8001",
+    "deploy": "pm2 start npm --name news -- run prod"
+  },
+  "author": "showd0wn",
+  "license": "MIT",
+  "dependencies": {
+    "eslint-plugin-react": "^7.11.1",
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
