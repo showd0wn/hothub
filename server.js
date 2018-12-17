@@ -10,14 +10,13 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
-  server.get('/', (req, res) => {
-    if (dev) return
-    renderAndCache(app, req, res, '/')
-  })
+  if (!dev) {
+    server.get('/', (req, res) => {
+      renderAndCache(app, req, res, '/')
+    })
+  }
 
-  server.get('*', (req, res) => {
-    handle(req, res)
-  })
+  server.get('*', handle)
 
   server.listen(port, (err) => {
     if (err) throw err

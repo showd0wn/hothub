@@ -6,8 +6,6 @@
     "components",
     "pages",
     "utils",
-    "static",
-    "server.js"
   ],
   "ignore_watch": [
     "node_modules"

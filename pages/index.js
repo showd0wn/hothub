@@ -16,6 +16,7 @@ export default class Index extends React.Component {
     return (
       <Layout>
         <div>{ this.props.shh[1].title }</div>
+        <div>{ this.props.shh[1].url }</div>
 
         <Button size='small' type='primary'>OK</Button>
         <Button size='small' style={{ marginLeft: 8 }}>Cancel</Button>
