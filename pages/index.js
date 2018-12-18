@@ -20,6 +20,11 @@ export default class Index extends React.Component {
 
         <Button size='small' type='primary'>OK</Button>
         <Button size='small' style={{ marginLeft: 8 }}>Cancel</Button>
+        <style jsx>{`
+          div {
+            color: green;
+          }
+        `}</style>
       </Layout>
     )
   }

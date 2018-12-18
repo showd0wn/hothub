@@ -4,7 +4,7 @@
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     ["import", {
       "libraryName": "antd",
-      "style": true
+      "style": "css"
     }]
   ]
 }
