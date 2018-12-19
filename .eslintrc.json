@@ -16,7 +16,9 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "class-methods-use-this": "off",
+    "prefer-destructuring": "off",
     "no-console": "off",
+    "eqeqeq": "off",
     "semi": ["error", "never", { "beforeStatementContinuationChars": "always" }]
   }
 }
