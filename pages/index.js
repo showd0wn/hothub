@@ -1,21 +1,22 @@
 import 'isomorphic-unfetch'
 import { List, Tag } from 'antd'
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from '../components/layout'
 
 const CheckableTag = Tag.CheckableTag
 const menuMap = {
-  shh: '湿乎乎',
   bxj: '步行街',
-  nga: 'NGA',
-  v2ex: 'V2ex',
+  shh: '湿乎乎',
+  soccer: '绿茵场',
   zhihu: '知乎',
   douban: '豆瓣',
+  nga: 'NGA',
+  v2ex: 'V2ex',
   github: 'GitHub',
   segmentfault: 'SegmentFault',
   wallstreetcn: '华尔街见闻',
 }
-export default class Index extends React.Component {
+export default class Index extends Component {
   static async getInitialProps() {
     // eslint-disable-next-line no-undef
     const resp = await fetch('http://47.97.160.141:8000/news/listAll')
@@ -48,28 +49,36 @@ export default class Index extends React.Component {
 
     return (
       <Layout>
-        <List
-          header={sitesMenu}
-          style={{ backgroundColor: '#fff' }}
-          bordered
-          dataSource={this.props[this.state.menus[this.state.index]]}
-          renderItem={(item, index) => (
-            <List.Item>
-              <List.Item.Meta
-                title={
-                  <div>
-                    <span>{`${index + 1}.`}&nbsp;</span>
-                    <a target="_blank" href={item.url} style={{ fontWeight: 400 }}>{item.title}</a>
-                  </div>
-                }
-                description={item.summary}
-              />
-            </List.Item>
-          )}
-        />
+        <div className="list-container">
+          <List
+            header={sitesMenu}
+            style={{ backgroundColor: '#fff' }}
+            bordered
+            dataSource={this.props[this.state.menus[this.state.index]]}
+            renderItem={(item, index) => (
+              <List.Item>
+                <List.Item.Meta
+                  title={
+                    <div>
+                      <span>{`${index + 1}.`}&nbsp;</span>
+                      <a target="_blank" href={item.url} style={{ fontWeight: 400 }}>{item.title}</a>
+                    </div>
+                  }
+                  description={item.summary}
+                />
+              </List.Item>
+            )}
+          >
+          </List>
+        </div>
         <style jsx>{`
-          a:link, a:visited { color: #0a0a0a; }
-          a:hover, a:active { color: gray!important; }
+          .list-container {
+            padding: 12px;
+            margin: 0 auto;
+          }
+          @media (min-width: 768px) {
+            .list-container { max-width: 67vw; }
+          }
         `}</style>
       </Layout>
     )

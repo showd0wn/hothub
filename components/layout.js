@@ -13,17 +13,12 @@ export default ({ children, title = '卿志宇的关注' }) => (
       <link rel="shortcut icon" href="/static/favicon.ico" />
       <title>{ title }</title>
     </Head>
-    <Header></Header>
-    <Content>
-      <div className="container">
-        { children }
-      </div>
-    </Content>
+    <Header><img src="/static/logo.png" alt="潘多拉" /></Header>
+    <Content>{ children }</Content>
     <style global jsx>{`
-      body {
-        margin: 0;
-        padding: 0;
-      }
+      body { margin: 0; padding: 0; }
+      a:link, a:visited { color: #0a0a0a; }
+      a:hover, a:active { color: gray!important; }
       .ant-layout-header {
         position: fixed;
         top: 0;
@@ -31,6 +26,13 @@ export default ({ children, title = '卿志宇的关注' }) => (
         width: 100%;
         background: #fff;
         border-bottom: 1px solid #e8e8e8;
+        z-index: 10;
+        padding: 0;
+      }
+      .ant-layout-header img {
+        height: 52px;
+        padding-left: 4%;
+        vertical-align: baseline;
       }
       .ant-layout-content {
         padding-top: 52px;
@@ -46,10 +48,12 @@ export default ({ children, title = '卿志宇的关注' }) => (
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
       }
-      .container {
-        max-width: 960px;
-        padding: 12px;
-        margin: 0 auto;
+      .ant-list-header {
+        white-space: nowrap;
+        overflow: auto;
+      }
+      @media (min-width: 768px) {
+        .ant-layout-header img { padding-left: 16%; }
       }
     `}</style>
   </div>
