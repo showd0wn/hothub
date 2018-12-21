@@ -13,7 +13,7 @@ export default ({ children, title = '卿志宇的关注' }) => (
       <link rel="shortcut icon" href="/static/favicon.ico" />
       <title>{ title }</title>
     </Head>
-    <Header><img src="/static/logo.png" alt="潘多拉" /></Header>
+    <Header><img src="/static/logo.png" alt="今日热榜" /></Header>
     <Content>{ children }</Content>
     <style global jsx>{`
       body { margin: 0; padding: 0; }
