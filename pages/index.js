@@ -14,7 +14,6 @@ const menuMap = {
   v2ex: 'V2ex',
   github: 'GitHub',
   segmentfault: 'SegmentFault',
-  wallstreetcn: '华尔街见闻',
 }
 export default class Index extends Component {
   static async getInitialProps() {
