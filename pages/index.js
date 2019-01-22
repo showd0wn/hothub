@@ -18,7 +18,7 @@ const menuMap = {
 export default class Index extends Component {
   static async getInitialProps() {
     // eslint-disable-next-line no-undef
-    const resp = await fetch('http://47.97.160.141:8000/news/listAll')
+    const resp = await fetch('//api.qingzhiyu.com/news/listAll')
     const json = await resp.json()
     return json.data
   }
