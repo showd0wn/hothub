@@ -18,11 +18,12 @@ const menuMap = {
 }
 
 export default class Index extends Component {
-  static async getInitialProps({ query }) {
+  static async getInitialProps(...args) {
+    console.log(233, args)
     const menus = Object.keys(menuMap)
     let index
-    if (query && query.tab !== undefined) {
-      index = query.tab
+    if (args.query && args.query.tab !== undefined) {
+      index = args.query.tab
     } else {
       index = 0
     }
