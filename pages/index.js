@@ -1,5 +1,6 @@
 import 'isomorphic-unfetch'
 import { List, Tag } from 'antd'
+import Router from 'next/router'
 import React, { Component } from 'react'
 import Layout from '../components/layout'
 
@@ -15,32 +16,31 @@ const menuMap = {
   github: 'GitHub',
   segmentfault: 'SegmentFault',
 }
-export default class Index extends Component {
-  static async getInitialProps() {
-    // eslint-disable-next-line no-undef
-    const resp = await fetch('https://api.qingzhiyu.com/news/listAll')
-    const json = await resp.json()
-    return json.data
-  }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      index: 0,
-      menus: Object.keys(props).filter(item => item !== 'url'),
+export default class Index extends Component {
+  static async getInitialProps({ query }) {
+    const index = query.tab || 0
+    const menus = Object.keys(menuMap)
+    // eslint-disable-next-line no-undef
+    const resp = await fetch(`https://api.qingzhiyu.com/news/list?channel=${menus[index]}`)
+    const json = await resp.json()
+    return {
+      index,
+      menus,
+      data: json.list,
     }
   }
 
   render() {
     const sitesMenu = (
       <div>
-        {this.state.menus.map((item, index) => (
+        {this.props.menus.map((item, index) => (
           <CheckableTag
             key={item}
-            checked={this.state.index == index}
-            onChange={() => this.setState({ index })}
+            checked={this.props.index == index}
+            onChange={() => Router.push(`/?tab=${index}`)}
           >
-            {menuMap[item]}
+              {menuMap[item]}
           </CheckableTag>
         ))}
       </div>
@@ -53,7 +53,7 @@ export default class Index extends Component {
             header={sitesMenu}
             style={{ backgroundColor: '#fff' }}
             bordered
-            dataSource={this.props[this.state.menus[this.state.index]]}
+            dataSource={this.props.data}
             renderItem={(item, index) => (
               <List.Item>
                 <List.Item.Meta

@@ -3,7 +3,7 @@ const LRUCache = require('lru-cache')
 const ssrCache = new LRUCache({
   length: (n, key) => n.toString().length + key.toString().length,
   max: 100 * 1000 * 1000,
-  maxAge: 1000 * 60 * 10,
+  maxAge: 1000 * 60 * 15,
 })
 
 async function renderAndCache(app, req, res, pagePath, queryParams) {
