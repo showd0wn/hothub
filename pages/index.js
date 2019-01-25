@@ -18,15 +18,9 @@ const menuMap = {
 }
 
 export default class Index extends Component {
-  static async getInitialProps(...args) {
-    console.log(233, args)
+  static async getInitialProps({ query }) {
+    const index = query.tab || 0
     const menus = Object.keys(menuMap)
-    let index
-    if (args.query && args.query.tab !== undefined) {
-      index = args.query.tab
-    } else {
-      index = 0
-    }
     // eslint-disable-next-line no-undef
     const resp = await fetch(`https://api.qingzhiyu.com/news/list?channel=${menus[index]}`)
     const json = await resp.json()

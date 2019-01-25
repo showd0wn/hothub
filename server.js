@@ -1,3 +1,4 @@
+const { parse } = require('url')
 const next = require('next')
 const express = require('express')
 const renderAndCache = require('./scripts/cache')
@@ -12,7 +13,8 @@ app.prepare().then(() => {
 
   if (!dev) {
     server.get('/', (req, res) => {
-      renderAndCache(app, req, res, '/')
+      const { query } = parse(req.url, true)
+      renderAndCache(app, req, res, '/', query)
     })
   }
 
