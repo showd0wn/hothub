@@ -5,7 +5,7 @@
   "watch": [
     "components",
     "pages",
-    "utils",
+    "utils"
   ],
   "ignore_watch": [
     "node_modules"
